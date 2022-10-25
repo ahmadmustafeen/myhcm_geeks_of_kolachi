@@ -88,21 +88,55 @@ contract Users {
         return availablePositions;
     }
 
-
-    function EditUsers(string memory firstName, string memory lastName) public returns(userDataType memory){
+    function EditUser(string memory firstName, string memory lastName)
+        public
+        returns (userDataType memory)
+    {
         userDataType memory userFound;
         uint8 index;
-        for(uint8 i=0; i<users.length; i++){
-            if(users[i].WalletAddress==msg.sender){
+        for (uint8 i = 0; i < users.length; i++) {
+            if (users[i].WalletAddress == msg.sender) {
                 userFound = users[i];
-                index=i;
+                index = i;
             }
         }
-        userFound=userDataType({firstName:firstName,lastName:lastName,position:userFound.position,employeeId:userFound.employeeId,WalletAddress:userFound.WalletAddress});
+        userFound = userDataType({
+            firstName: firstName,
+            lastName: lastName,
+            position: userFound.position,
+            employeeId: userFound.employeeId,
+            WalletAddress: userFound.WalletAddress
+        });
         users[index] = userFound;
 
         return users[index];
     }
 
+    function EditAnyUser(
+        string memory firstName,
+        string memory lastName,
+        address walletAddress
+    ) public returns (userDataType memory) {
 
+        require(msg.sender == owner,"This function is available only for admin");
+
+        userDataType memory userFound;
+        uint8 index;
+        for (uint8 i = 0; i < users.length; i++) {
+            if (users[i].WalletAddress == walletAddress) {
+                userFound = users[i];
+                index = i;
+            }
+        }
+        userFound = userDataType({
+            firstName: firstName,
+            lastName: lastName,
+            position: userFound.position,
+            employeeId: userFound.employeeId,
+            WalletAddress: userFound.WalletAddress
+        });
+        users[index] = userFound;
+
+        return users[index];
+    }
 }

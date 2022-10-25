@@ -19,6 +19,7 @@ contract Attendance {
 
     function markAttendance () public {
         entries.push(entry({walletAddress:msg.sender,dateStamp:block.timestamp}));
+        emit Entry(msg.sender, block.timestamp);
     }
 
     function fetchAttendance () view public returns(entry[] memory) {

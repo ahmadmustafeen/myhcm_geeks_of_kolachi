@@ -20,9 +20,9 @@ async function main() {
 
   // const allPositions = await userContract.FetchAllPositions();
   // console.log(allPositions)
-  // await userContract.CreateUser("Ahmad","Mustafeen","NEWEST_POSITION","0x06Cf79f8a04fdcb2Cf75069eE8FFa3575d94EfdB");
-  // await userContract.CreateUser("Deployer","Deployer","NEWEST_POSITION","0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
-  // await userContract.CreateUser("Bilal","Bilal","NEWEST_POSITION","0x665992de65856FECE65F0064Abf57241Ce831369");
+  await userContract.CreateUser("Ahmad","Mustafeen","NEWEST_POSITION","0x06Cf79f8a04fdcb2Cf75069eE8FFa3575d94EfdB");
+  await userContract.CreateUser("Deployer","Deployer","NEWEST_POSITION","0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
+  await userContract.CreateUser("Bilal","Bilal","NEWEST_POSITION","0x665992de65856FECE65F0064Abf57241Ce831369");
   // const allUsers = await userContract.mainFunction();
   // console.log({allUsers:allUsers})
 
@@ -48,11 +48,11 @@ async function main() {
 
     // **************** %%%%%%%%%%%%% EDITING USER  %%%%%%%%%%%%% ****************
     
-    // const EditedUser = await userContract.EditUsers("salman","khan");
-    // console.log("EditedUser",EditedUser)
+    const EditedUser = await userContract.EditAnyUser("salman","khan",'0x06Cf79f8a04fdcb2Cf75069eE8FFa3575d94EfdB');
+    console.log("EditedUser",EditedUser)
     
-  // const allUsersa = await userContract.mainFunction();
-  // console.log({allUsersa})
+  const allUsersa = await userContract.mainFunction();
+  console.log({allUsersa})
 
     // **************** %%%%%%%%%%%%% EDITING USER  %%%%%%%%%%%%% **************** 
 
