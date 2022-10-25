@@ -8,16 +8,22 @@ pragma solidity ^0.8.9;
 
 contract Attendance {
     struct entry {
-        uint8 id;
-        string name;
-        string dateStamp;
+        address walletAddress;
+        uint256 dateStamp;
     }
     entry[] public entries;
     event Entry(
-        uint8 id,
-        string name,
-        string dateStamp
+        address walletAddress,
+        uint256 dateStamp
     );
+
+    function markAttendance () public {
+        entries.push(entry({walletAddress:msg.sender,dateStamp:block.timestamp}));
+    }
+
+    function fetchAttendance () view public returns(entry[] memory) {
+        return entries;
+    }
 
 
 
