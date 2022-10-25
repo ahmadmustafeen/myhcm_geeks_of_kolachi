@@ -7,7 +7,7 @@
 const hre = require("hardhat");
 
 async function main() {
-  const Users = await hre.ethers.getContractFactory("Users");
+  const Users = await hre.ethers.getContractFactory("Main");
   const userContract = await Users.deploy();
 
   await userContract.deployed();
@@ -15,13 +15,11 @@ async function main() {
   const allPositions = await userContract.FetchAllPositions();
   console.log(allPositions)
 
-  await userContract.CreateUser("Ahmad","Mustafeen","NEWEST_POSITION");
-  await userContract.CreateUser("Bilal","Bilal","NEWEST_POSITION");
-  const allUsers = await userContract.FetchAllUser();
+  await userContract.CreateUser("Ahmad","Mustafeen","NEWEST_POSITION","0x665992de65856FECE65F0064Abf57241Ce831369");
+  await userContract.CreateUser("Bilal","Bilal","NEWEST_POSITION","0x665992de65856FECE65F0064Abf57241Ce831369");
+  const allUsers = await userContract.mainFunction();
   console.log(allUsers)
-
-  const allNewPositions = await userContract.FetchAllPositions();
-  console.log(allNewPositions);
+  
 }
 main().catch((error) => {
   console.error(error);
