@@ -48,15 +48,25 @@ async function main() {
 
     // **************** %%%%%%%%%%%%% EDITING USER  %%%%%%%%%%%%% ****************
     
-    const EditedUser = await userContract.EditAnyUser("salman","khan",'0x06Cf79f8a04fdcb2Cf75069eE8FFa3575d94EfdB');
-    console.log("EditedUser",EditedUser)
+  //   const EditedUser = await userContract.EditAnyUser("salman","khan",'0x06Cf79f8a04fdcb2Cf75069eE8FFa3575d94EfdB');
+  //   console.log("EditedUser",EditedUser)
     
-  const allUsersa = await userContract.mainFunction();
-  console.log({allUsersa})
+  // const allUsersa = await userContract.mainFunction();
+  // console.log({allUsersa})
 
     // **************** %%%%%%%%%%%%% EDITING USER  %%%%%%%%%%%%% **************** 
 
 
+
+    // **************** %%%%%%%%%%%%% Applying for leave by USER  %%%%%%%%%%%%% **************** 
+    // await userContract.ApplyForLeave("CASUAL");
+    // await userContract.ApplyForLeave("SICK");
+    // await userContract.ApplyForLeave("SICK");
+    // await userContract.ApplyForLeave("SICK");
+    // const fetchAllLeaves = await userContract.FetchAllLeaves();
+
+    // console.log({fetchAllLeaves})
+    // // **************** %%%%%%%%%%%%% Applying for leave by USER  %%%%%%%%%%%%% ****************  
 
 
 
