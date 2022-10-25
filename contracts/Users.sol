@@ -2,10 +2,12 @@
 pragma solidity ^0.8.0;
 
 contract Users {
-    uint8 public id;
-    string[] availablePositions;
+    address private owner;
+    uint8 private id;
+    string[] private availablePositions;
 
     constructor() {
+        owner = msg.sender;
         id = 1;
         availablePositions = [
             "ASSOCIATE_SOFTWARE_DEVELOPER",
@@ -49,6 +51,7 @@ contract Users {
         string memory position,
         address walletAddress
     ) public returns (string memory) {
+        require(msg.sender == owner, "Admin previliges required.");
         bool doesListContainElement = false;
         for (uint256 i = 0; i < availablePositions.length; i++) {
             if (compareStrings(availablePositions[i], position)) {
@@ -56,17 +59,14 @@ contract Users {
                 break;
             }
         }
-        for(uint8 j=0;j<users.length;j++){
-            require(walletAddress != users[j].WalletAddress,"Cannot add two person with same wallet address");
-            // if((walletAddress==users[i].WalletAddress)){
-            // // if(walletAddress==users[i].WalletAddress){
-            //     require(true,"Cannot add two person with same wallet address");
-            // }
-        }
-        if (!doesListContainElement) {
-            availablePositions.push(position);
-        }
-        
+        for (uint8 j = 0; j < users.length; j++)
+            require(
+                walletAddress != users[j].WalletAddress,
+                "Cannot add two person with same wallet address"
+            );
+
+        if (!doesListContainElement) availablePositions.push(position);
+
         users.push(
             userDataType({
                 employeeId: id,
@@ -87,4 +87,22 @@ contract Users {
     function FetchAllPositions() public view returns (string[] memory) {
         return availablePositions;
     }
+
+
+    function EditUsers(string memory firstName, string memory lastName) public returns(userDataType memory){
+        userDataType memory userFound;
+        uint8 index;
+        for(uint8 i=0; i<users.length; i++){
+            if(users[i].WalletAddress==msg.sender){
+                userFound = users[i];
+                index=i;
+            }
+        }
+        userFound=userDataType({firstName:firstName,lastName:lastName,position:userFound.position,employeeId:userFound.employeeId,WalletAddress:userFound.WalletAddress});
+        users[index] = userFound;
+
+        return users[index];
+    }
+
+
 }
