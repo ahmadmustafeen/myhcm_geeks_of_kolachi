@@ -7,7 +7,7 @@ pragma solidity ^0.8.9;
 
 
 contract Attendance {
-    struct entry {
+struct entry {
         address walletAddress;
         uint256 dateStamp;
     }
