@@ -56,9 +56,17 @@ contract Users {
                 break;
             }
         }
+        for(uint8 j=0;j<users.length;j++){
+            require(walletAddress != users[j].WalletAddress,"Cannot add two person with same wallet address");
+            // if((walletAddress==users[i].WalletAddress)){
+            // // if(walletAddress==users[i].WalletAddress){
+            //     require(true,"Cannot add two person with same wallet address");
+            // }
+        }
         if (!doesListContainElement) {
             availablePositions.push(position);
         }
+        
         users.push(
             userDataType({
                 employeeId: id,

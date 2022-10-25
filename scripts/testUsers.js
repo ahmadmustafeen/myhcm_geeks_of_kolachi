@@ -15,8 +15,9 @@ async function main() {
   const allPositions = await userContract.FetchAllPositions();
   console.log(allPositions)
 
-  await userContract.CreateUser("Ahmad","Mustafeen","NEWEST_POSITION","0x665992de65856FECE65F0064Abf57241Ce831369");
+  await userContract.CreateUser("Ahmad","Mustafeen","NEWEST_POSITION","0x06Cf79f8a04fdcb2Cf75069eE8FFa3575d94EfdB");
   await userContract.CreateUser("Bilal","Bilal","NEWEST_POSITION","0x665992de65856FECE65F0064Abf57241Ce831369");
+  await userContract.CreateUser("Bilal","Bilal","NEWEST_POSITION","0x06Cf79f8a04fdcb2Cf75069eE8FFa3575d94EfdB");
   const allUsers = await userContract.mainFunction();
   console.log(allUsers)
   
